@@ -49,7 +49,10 @@ jobs:
       - name: Set buildpack
         run: heroku buildpacks:set heroku/python --app "$HEROKU_APP_NAME"
         
-        
+      - name: Configure Heroku Git remote
+        run: heroku git:remote -a $HEROKU_APP_NAME
+
       - name: Deploy to Heroku
-        run: git push heroku HEAD:main
+        run: git push heroku HEAD:main --force
+
 
