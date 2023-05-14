@@ -17,3 +17,4 @@ jobs:
           heroku_app_name: "api-open-classroom" #Must be unique in Heroku
           heroku_email: "benoit.cppn@gmail.com"
           appdir: "API" #
+          
