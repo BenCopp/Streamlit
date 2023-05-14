@@ -44,7 +44,7 @@ jobs:
         run: cp API/My_API.py dist/My_API.py
         
       - name: Configure Heroku Git remote
-        run: heroku git:remote -a $HEROKU_APP_NAME
+        run: heroku git:remote -a "$HEROKU_APP_NAME"
 
       - name: Log in to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
