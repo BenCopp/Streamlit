@@ -42,7 +42,9 @@ jobs:
 
       - name: Include API file
         run: cp API/My_API.py dist/My_API.py
-
+        
+      - name: Configure Heroku Git remote
+        run: heroku git:remote -a $HEROKU_APP_NAME
 
       - name: Log in to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
@@ -55,8 +57,7 @@ jobs:
       - name: Set buildpack
         run: heroku buildpacks:set heroku/python --app "$HEROKU_APP_NAME"
         
-      - name: Configure Heroku Git remote
-        run: heroku git:remote -a $HEROKU_APP_NAME
+
 
       - name: Deploy to Heroku
         run: git push heroku HEAD:refs/heads/main
