@@ -13,8 +13,8 @@ import pandas as pd
 
 class MyTest(unittest.TestCase):
     def test_prediction_good(self):
-        model = lgb.Booster(model_file='E:/OpenClassroom/streamlit/API/my_model.txt')
-        df = pd.read_csv('E:/OpenClassroom/streamlit/Streamlit/df.csv')
+        model = lgb.Booster(model_file='API/my_model.txt')
+        df = pd.read_csv('Streamlit/df.csv')
         df_pred = df.loc[df['SK_ID_CURR'] == 156685]
         df_dict = df_pred.to_dict()
         df = traitement(df_dict)
@@ -24,8 +24,8 @@ class MyTest(unittest.TestCase):
         self.assertAlmostEqual(y_pred[0][0], expected_value, places=3)
 
     def test_prediction_bad(self):
-        model = lgb.Booster(model_file='E:/OpenClassroom/streamlit/API/my_model.txt')
-        df = pd.read_csv('E:/OpenClassroom/streamlit/Streamlit/df.csv')
+        model = lgb.Booster(model_file='API/my_model.txt')
+        df = pd.read_csv('Streamlit/df.csv')
         df_pred = df.loc[df['SK_ID_CURR'] == 389871]
         df_dict = df_pred.to_dict()
         df = traitement(df_dict)
