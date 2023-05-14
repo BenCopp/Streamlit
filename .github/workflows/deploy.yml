@@ -35,10 +35,10 @@ jobs:
 
 
       - name: Log in to Heroku
-        run: echo ${{ secrets.HEROKU_API_KEY }} | heroku login --interactive
+        run: echo $HEROKU_API_KEY | heroku login --interactive
 
       - name: Create Heroku app
-        run: heroku create ${{ secrets.HEROKU_APP_NAME }}
+        run: heroku create $HEROKU_APP_NAME
 
       - name: Set buildpack
         run: heroku buildpacks:set heroku/python
