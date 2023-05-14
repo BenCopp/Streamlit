@@ -26,12 +26,13 @@ jobs:
         
       - name: Create dist directory
         run: mkdir dist
+        
+      - name: Run unit tests
+        run: python -m unittest discover Test_Unitaire
 
       - name: Include API file
         run: cp API/My_API.py dist/My_API.py
 
-      - name: Run unit tests
-        run: python -m unittest discover tests
 
       - name: Log in to Heroku
         run: echo ${{ secrets.HEROKU_API_KEY }} | heroku login --interactive
