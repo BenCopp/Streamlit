@@ -39,10 +39,11 @@ jobs:
 
       - name: Create Heroku app
         run: heroku create $HEROKU_APP_NAME
-
+        
       - name: Set buildpack
-        run: heroku buildpacks:set heroku/python
-
+        run: heroku buildpacks:set heroku/python --app $HEROKU_APP_NAME
+        
+        
       - name: Deploy to Heroku
         run: git push heroku HEAD:main
 
