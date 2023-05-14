@@ -14,15 +14,15 @@ def traitement(json_data):
   
   df =pd.DataFrame.from_dict(json_data)
 
-  feature1_encoder = joblib.load('E:/OpenClassroom/streamlit/API/Encoder/FLAG_OWN_CAR_encoder.joblib')
-  feature2_encoder = joblib.load('E:/OpenClassroom/streamlit/API/Encoder/FLAG_OWN_REALTY_encoder.joblib')
-  feature3_encoder = joblib.load('E:/OpenClassroom/streamlit/API/Encoder/NAME_CONTRACT_TYPE_encoder.joblib')
-  imputer = joblib.load('E:/OpenClassroom/streamlit/API/Encoder/imputer.joblib')
-  scaler = joblib.load('E:/OpenClassroom/streamlit/API/Encoder/scaler.joblib')
-  with open('E:/OpenClassroom/streamlit/API/list_column_dummmies.txt', 'r') as f:
+  feature1_encoder = joblib.load('API/Encoder/FLAG_OWN_CAR_encoder.joblib')
+  feature2_encoder = joblib.load('API/Encoder/FLAG_OWN_REALTY_encoder.joblib')
+  feature3_encoder = joblib.load('API/Encoder/NAME_CONTRACT_TYPE_encoder.joblib')
+  imputer = joblib.load('API/Encoder/imputer.joblib')
+  scaler = joblib.load('API/Encoder/scaler.joblib')
+  with open('API/list_column_dummmies.txt', 'r') as f:
     cols_dummies = [line.strip() for line in f.readlines()]
 
-  with open('E:/OpenClassroom/streamlit/API/list_column_final.txt', 'r') as f:
+  with open('API/list_column_final.txt', 'r') as f:
     cols_to_keep = [line.strip() for line in f.readlines()]
 
   df.replace({'XNA': np.nan, 'XNP': np.nan, 'Unknown': np.nan}, inplace = True)

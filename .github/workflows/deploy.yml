@@ -1,0 +1,24 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Install Heroku CLI
+        run: curl https://cli-assets.heroku.com/install.sh | sh
+        
+      - uses: akhileshns/heroku-deploy@v3.12.14 # This is the action
+        with:
+          heroku_api_key: $HEROKU_API_KEY
+          heroku_app_name: "api-open-classroom" #Must be unique in Heroku
+          heroku_email: "benoit.cppn@gmail.com"
+          appdir: "API" #
+
+

@@ -9,7 +9,7 @@ from Fonction_API import traitement
 
 
 
-model = lgb.Booster(model_file='E:/OpenClassroom/streamlit/API/my_model.txt')
+model = lgb.Booster(model_file='API/my_model.txt')
 
 
 app = FastAPI()

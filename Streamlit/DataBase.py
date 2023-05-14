@@ -13,7 +13,7 @@ st.sidebar.markdown("# Base de données avec filtre")
 
 
 st.write("# Votre base de données")
-df = pd.read_csv('E:/OpenClassroom/streamlit/Streamlit/df.csv')
+df = pd.read_csv('Streamlit/df.csv')
 df['Age'] = round(df['DAYS_BIRTH'] / 365).abs()
 df['CREDIT_INCOME_PERCENT'] = df['AMT_CREDIT'] / df['AMT_INCOME_TOTAL']
 df['ANNUITY_INCOME_PERCENT'] = df['AMT_ANNUITY'] / df['AMT_INCOME_TOTAL']
