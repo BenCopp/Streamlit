@@ -1,0 +1,34 @@
+name: Deploy to Heroku
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: python -m unittest discover tests
+
+      - name: Log in to Heroku
+        run: echo ${{ secrets.HEROKU_API_KEY }} | heroku login --interactive
+
+      - name: Create Heroku app
+        run: heroku create ${{ secrets.HEROKU_APP_NAME }}
+
+      - name: Deploy to Heroku
+        run: git push heroku HEAD:main
