@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: BenCopp/Streamlit@2.304.0# This is the action
+      - uses: BenCopp/Streamlit@918e76f # This is the action
         with:
           heroku_api_key: $HEROKU_API_KEY
           heroku_app_name: "api-open-classroom" #Must be unique in Heroku
