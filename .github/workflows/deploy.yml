@@ -35,7 +35,8 @@ jobs:
 
 
       - name: Log in to Heroku
-        run: echo $HEROKU_API_KEY | heroku login --interactive
+        run: echo $HEROKU_EMAIL | heroku login -i 
+             echo $HEROKU_API_KEY | heroku login --interactive
 
       - name: Create Heroku app
         run: heroku create $HEROKU_APP_NAME
