@@ -35,8 +35,9 @@ jobs:
 
 
       - name: Log in to Heroku
-        run: echo $HEROKU_EMAIL | heroku login -i 
-             echo $HEROKU_API_KEY | heroku login --interactive
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: $HEROKU_API_KEY
 
       - name: Create Heroku app
         run: heroku create $HEROKU_APP_NAME
