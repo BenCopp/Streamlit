@@ -41,7 +41,7 @@ jobs:
         run: heroku create $HEROKU_APP_NAME
         
       - name: Set buildpack
-        run: heroku buildpacks:set heroku/python --app $HEROKU_APP_NAME
+        run: heroku buildpacks:set heroku/python --app "$HEROKU_APP_NAME"
         
         
       - name: Deploy to Heroku
