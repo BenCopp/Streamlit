@@ -19,7 +19,10 @@ jobs:
           python-version: 3.11.3
 
       - name: Install dependencies
-        run: pip install -r   requirement.txt
+        run: pip install -r requirement.txt
+
+      - name: Include runtime.txt file
+        run: cp runtime.txt dist/runtime.txt
 
       - name: Run unit tests
         run: python -m unittest discover tests
