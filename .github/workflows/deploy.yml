@@ -30,5 +30,8 @@ jobs:
       - name: Create Heroku app
         run: heroku create ${{ secrets.HEROKU_APP_NAME }}
 
+      - name: Set buildpack
+        run: heroku buildpacks:set heroku/python
+
       - name: Deploy to Heroku
         run: git push heroku HEAD:main
