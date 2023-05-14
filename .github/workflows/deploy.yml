@@ -1,5 +1,4 @@
-
-name: Deploy to Heroku
+name: Deploy
 
 on:
   push:
@@ -7,16 +6,14 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Deploy to Heroku
-        run: |
-          curl https://cli-assets.heroku.com/install.sh | sh
-          heroku login -i
-          heroku git:remote -a your-heroku-app-name
-          git push heroku main
+      - uses: actions/checkout@v2
+        
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: $HEROKU_API_KEYTEST
+          heroku_app_name: "api-open-classroom" #Must be unique in Heroku
+          heroku_email: "benoit.cppn@gmail.com"
+          appdir: "API" #
