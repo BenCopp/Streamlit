@@ -53,6 +53,6 @@ jobs:
         run: heroku git:remote -a $HEROKU_APP_NAME
 
       - name: Deploy to Heroku
-        run: git push heroku HEAD:main --force
+        run: git push heroku HEAD:refs/heads/main
 
 
