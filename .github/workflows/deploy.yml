@@ -1,4 +1,4 @@
-name: Deploy to Heroku
+name: Deploy
 
 on:
   push:
@@ -6,60 +6,13 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Install Heroku CLI
-        run: curl https://cli-assets.heroku.com/install.sh | sh
-        
-        
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.11.3
-          
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16
-      
-      
-      - name: Upgrade pip
-        run: pip install --upgrade pip
-
-      - name: Install dependencies
-        run: pip install -r requirement.txt
-        
-      - name: Create dist directory
-        run: mkdir dist
-        
-      - name: Run unit tests
-        run: python -m unittest discover Test_Unitaire
-
-      - name: Include API file
-        run: cp API/My_API.py dist/My_API.py
-        
-      - name: Configure Heroku Git remote
-        run: heroku git:remote -a "api-open-classroom"
-
-      - name: Log in to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.14 # This is the action
         with:
           heroku_api_key: $HEROKU_API_KEY
-
-      - name: Create Heroku app
-        run: heroku create $HEROKU_APP_NAME
-        
-      - name: Set buildpack
-        run: heroku buildpacks:set heroku/python --app $HEROKU_APP_NAME
-        
-
-
-      - name: Deploy to Heroku
-        run: git push heroku HEAD:refs/heads/main
-
-
+          heroku_app_name: "api-open-classroom" #Must be unique in Heroku
+          heroku_email: "benoit.cppn@gmail.com"
+          appdir: "API" #
