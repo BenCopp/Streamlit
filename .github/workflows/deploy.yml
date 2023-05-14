@@ -24,8 +24,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirement.txt
 
-      - name: Include runtime.txt file
-        run: cp runtime.txt dist/runtime.txt
+      - name: Include API file
+        run: cp API/My_API.py dist/My_API.py
 
       - name: Run unit tests
         run: python -m unittest discover tests
