@@ -29,3 +29,6 @@ async def predict(json_data: dict):
   y_pred = y_pred.reshape((-1, 1))
 
   return {'prediction': y_pred.tolist()}
+
+
+uvicorn.run(app, port=8000)
