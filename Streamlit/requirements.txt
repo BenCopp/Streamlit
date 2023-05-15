@@ -1,4 +1,4 @@
-﻿altair==4.2.2
+altair==4.2.2
 anyio==3.6.2
 appdirs==1.4.4
 argon2-cffi==21.3.0
@@ -98,6 +98,7 @@ python-dateutil==2.8.2
 python-json-logger==2.0.7
 python-multipart==0.0.6
 pytz==2023.3
+pytz-deprecation-shim==0.1.0.post
 pywinpty==2.0.10
 PyYAML==6.0
 pyzmq==25.0.2
