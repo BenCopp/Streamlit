@@ -9,7 +9,7 @@ from Fonction_API import traitement
 
 
 
-model = lgb.Booster(model_file='API/my_model.txt')
+model = lgb.Booster(model_file='./my_model.txt')
 
 
 app = FastAPI()
@@ -29,7 +29,3 @@ async def predict(json_data: dict):
   y_pred = y_pred.reshape((-1, 1))
 
   return {'prediction': y_pred.tolist()}
-
-
-
-uvicorn.run(app, port=8000)
