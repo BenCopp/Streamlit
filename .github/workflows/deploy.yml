@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      
+      
+      - name: Run unit tests
+        run: python -m unittest discover Test_Unitaire
         
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
@@ -17,3 +21,10 @@ jobs:
           heroku_app_name: "api-open-classroom" #Must be unique in Heroku
           heroku_email: "benoit.cppn@gmail.com"
           appdir: "API" #
+
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "dashboard-open-classroom" #Must be unique in Heroku
+          heroku_email: "benoit.cppn@gmail.com"
+          appdir: "Streamlit" #
