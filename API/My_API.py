@@ -31,4 +31,4 @@ async def predict(json_data: dict):
   return {'prediction': y_pred.tolist()}
 
 
-uvicorn.run(app, port=8000)
+
