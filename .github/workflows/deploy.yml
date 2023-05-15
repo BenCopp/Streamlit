@@ -9,7 +9,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    
       - uses: actions/checkout@v2
+      
+      - name: Upgrade pip
+        run: pip install --upgrade pip
+
+      - name: Install dependencies
+        run: pip install -r requirement.txt
+
+      - name: Run unit tests
+        run: python -m unittest discover Test_Unitaire
       
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
