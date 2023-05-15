@@ -33,7 +33,7 @@ if 'key' in st.session_state:
 
 df_pred = st.session_state.df.loc[st.session_state.df['SK_ID_CURR'] ==  selected_id]
 
-url = 'http://127.0.0.1:8000/prediction'
+url = 'https://api-open-classroom.herokuapp.com/prediction'
 headers = {'Content-Type': 'application/json'}
 
 df_dict = df_pred.to_dict()
