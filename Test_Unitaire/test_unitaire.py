@@ -1,7 +1,5 @@
 import unittest
 import json
-import sys
-sys.path.append('E:/OpenClassroom/streamlit')
 from API.Fonction_API import traitement
 import lightgbm as lgb
 import pandas as pd
