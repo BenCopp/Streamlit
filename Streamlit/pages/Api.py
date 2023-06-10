@@ -93,6 +93,7 @@ shap_values = response_data['data_type']
 shap_array = np.array(shap_values)
 
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 
 
