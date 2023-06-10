@@ -84,10 +84,12 @@ file_path = "./list_column_final.txt"
 # Open the text file
 with open(file_path, "r") as file:
     features_name = file.read().split("\n")  
-
+    
+    
+url2 = 'https://api-open-classroom.herokuapp.com/plot'
 df_dict = df_pred.to_dict()
 data_json = json.dumps(df_dict)
-b = requests.post(url, headers=headers, data=data_json)
+b = requests.post(url2, headers=headers, data=data_json)
 response_data = b.json()
 shap_values = response_data['data_type']
 shap_array = np.array(shap_values)
