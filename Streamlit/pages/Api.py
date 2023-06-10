@@ -4,6 +4,10 @@ import numpy as np
 import requests
 import plotly.graph_objs as go
 import json
+import shap
+import lightgbm as lgb
+
+
 
 st.set_page_config(
     page_title="Api",
@@ -72,6 +76,28 @@ fig = go.Figure(go.Indicator(
 fig.update_layout(paper_bgcolor = "lavender", font = {'color': "black", 'family': "Arial"})
 
 
+model = lgb.Booster(model_file='API/my_model.txt')
+explainer = shap.Explainer(model)
+
+file_path = "API/list_column_final.txt"
+
+# Open the text file
+with open(file_path, "r") as file:
+    features_name = file.read().split("\n")  
+
+df_dict = df_pred.to_dict()
+data_json = json.dumps(df_dict)
+b = requests.post(url, headers=headers, data=data_json)
+response_data = b.json()
+shap_values = response_data['data_type']
+shap_array = np.array(shap_values)
+
+
+
+
+
+
+
 # Créez une colonne centrale dans Streamlit
 col1, col2, col3 = st.columns([1, 3, 1])
 
@@ -88,3 +114,6 @@ with col2:
 with col3:
     st.write("")
 
+shap.force_plot(explainer.expected_value[0], shap_array[0],matplotlib=True,show=False
+                    ,figsize=(16,5), feature_names= features_name)
+st.pyplot(bbox_inches='tight',dpi=300,pad_inches=0)
