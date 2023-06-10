@@ -76,10 +76,10 @@ fig = go.Figure(go.Indicator(
 fig.update_layout(paper_bgcolor = "lavender", font = {'color': "black", 'family': "Arial"})
 
 
-model = lgb.Booster(model_file='API/my_model.txt')
+model = lgb.Booster(model_file='./my_model.txt')
 explainer = shap.Explainer(model)
 
-file_path = "API/list_column_final.txt"
+file_path = "./list_column_final.txt"
 
 # Open the text file
 with open(file_path, "r") as file:
