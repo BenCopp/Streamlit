@@ -6,7 +6,7 @@ import plotly.graph_objs as go
 import json
 import shap
 import lightgbm as lgb
-
+import joblib 
 
 
 st.set_page_config(
@@ -76,7 +76,7 @@ fig = go.Figure(go.Indicator(
 fig.update_layout(paper_bgcolor = "lavender", font = {'color': "black", 'family': "Arial"})
 
 
-model = lgb.Booster(model_file='./lgb.pkl')
+model = joblib.load('./lgb.pkl')
 explainer = shap.Explainer(model)
 
 file_path = "./list_column_final.txt"
