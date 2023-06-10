@@ -76,7 +76,7 @@ fig = go.Figure(go.Indicator(
 fig.update_layout(paper_bgcolor = "lavender", font = {'color': "black", 'family': "Arial"})
 
 
-model = lgb.Booster(model_file='./my_model.txt')
+model = lgb.Booster(model_file='./lgb.pkl')
 explainer = shap.Explainer(model)
 
 file_path = "./list_column_final.txt"
