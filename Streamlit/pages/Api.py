@@ -79,7 +79,7 @@ fig.update_layout(paper_bgcolor = "lavender", font = {'color': "black", 'family'
 model = joblib.load('./lgb.pkl')
 explainer = shap.Explainer(model)
 
-file_path = "./list_column_final.txt"
+file_path = "./feature_names.txt"
 
 # Open the text file
 with open(file_path, "r") as file:
